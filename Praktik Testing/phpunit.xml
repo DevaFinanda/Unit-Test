@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.0/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         colors="true"
+         failOnWarning="false"
+         failOnRisky="false"
+         beStrictAboutOutputDuringTests="false">
+    <testsuites>
+        <testsuite name="Calculator Test Suite">
+            <file>CalculatorTest.php</file>
+        </testsuite>
+    </testsuites>
+    <coverage>
+        <report>
+            <html outputDirectory="coverage-report"/>
+            <text outputFile="php://stdout" showUncoveredFiles="false"/>
+        </report>
+    </coverage>
+    <source>
+        <include>
+            <file>Calculator.php</file>
+        </include>
+    </source>
+</phpunit>
