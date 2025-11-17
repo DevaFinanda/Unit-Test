@@ -1,298 +1,597 @@
-"""
-Demonstration Script - Membuktikan Hasil Setiap Test Case
-Menampilkan hasil aktual dari setiap operasi calculator
-"""
-
-from calculator import Calculator
-
-def print_separator(title):
-    """Print section separator"""
-    print("\n" + "="*70)
-    print(f"  {title}")
-    print("="*70)
-
-def demonstrate_all_tests():
-    """Demonstrate all test cases with actual results"""
-    
-    print("\n🧮 CALCULATOR UNIT TESTING - DEMONSTRATION OF RESULTS")
-    print("="*70)
-    print("Membuktikan hasil dari setiap test case\n")
-    
-    # ==================== ADDITION TESTS ====================
-    print_separator("➕ ADDITION TESTS")
-    calc = Calculator()
-    
-    print("\n1. Test addition of two positive numbers")
-    result = calc.add(5, 3)
-    print(f"   calc.add(5, 3) = {result}")
-    print(f"   Expected: 8, Actual: {result}, Status: {'✅ PASS' if result == 8 else '❌ FAIL'}")
-    
-    print("\n2. Test addition of two negative numbers")
-    result = calc.add(-5, -3)
-    print(f"   calc.add(-5, -3) = {result}")
-    print(f"   Expected: -8, Actual: {result}, Status: {'✅ PASS' if result == -8 else '❌ FAIL'}")
-    
-    print("\n3. Test addition with zero")
-    result = calc.add(5, 0)
-    print(f"   calc.add(5, 0) = {result}")
-    print(f"   Expected: 5, Actual: {result}, Status: {'✅ PASS' if result == 5 else '❌ FAIL'}")
-    
-    print("\n4. Test addition of floating point numbers")
-    result = calc.add(2.5, 3.5)
-    print(f"   calc.add(2.5, 3.5) = {result}")
-    print(f"   Expected: 6.0, Actual: {result}, Status: {'✅ PASS' if result == 6.0 else '❌ FAIL'}")
-    
-    print("\n5. Test addition of positive and negative numbers")
-    result = calc.add(10, -3)
-    print(f"   calc.add(10, -3) = {result}")
-    print(f"   Expected: 7, Actual: {result}, Status: {'✅ PASS' if result == 7 else '❌ FAIL'}")
-    
-    # ==================== SUBTRACTION TESTS ====================
-    print_separator("➖ SUBTRACTION TESTS")
-    calc.clear_history()
-    
-    print("\n1. Test subtraction of positive numbers")
-    result = calc.subtract(10, 3)
-    print(f"   calc.subtract(10, 3) = {result}")
-    print(f"   Expected: 7, Actual: {result}, Status: {'✅ PASS' if result == 7 else '❌ FAIL'}")
-    
-    print("\n2. Test subtraction of negative numbers")
-    result = calc.subtract(-5, -3)
-    print(f"   calc.subtract(-5, -3) = {result}")
-    print(f"   Expected: -2, Actual: {result}, Status: {'✅ PASS' if result == -2 else '❌ FAIL'}")
-    
-    print("\n3. Test subtraction with zero")
-    result = calc.subtract(5, 0)
-    print(f"   calc.subtract(5, 0) = {result}")
-    print(f"   Expected: 5, Actual: {result}, Status: {'✅ PASS' if result == 5 else '❌ FAIL'}")
-    
-    print("\n4. Test subtraction resulting in negative number")
-    result = calc.subtract(3, 10)
-    print(f"   calc.subtract(3, 10) = {result}")
-    print(f"   Expected: -7, Actual: {result}, Status: {'✅ PASS' if result == -7 else '❌ FAIL'}")
-    
-    print("\n5. Test subtraction of floating point numbers")
-    result = calc.subtract(5.5, 2.3)
-    print(f"   calc.subtract(5.5, 2.3) = {result}")
-    print(f"   Expected: ~3.2, Actual: {result:.1f}, Status: {'✅ PASS' if abs(result - 3.2) < 0.1 else '❌ FAIL'}")
-    
-    # ==================== MULTIPLICATION TESTS ====================
-    print_separator("✖️  MULTIPLICATION TESTS")
-    calc.clear_history()
-    
-    print("\n1. Test multiplication of positive numbers")
-    result = calc.multiply(4, 5)
-    print(f"   calc.multiply(4, 5) = {result}")
-    print(f"   Expected: 20, Actual: {result}, Status: {'✅ PASS' if result == 20 else '❌ FAIL'}")
-    
-    print("\n2. Test multiplication of two negative numbers")
-    result = calc.multiply(-4, -5)
-    print(f"   calc.multiply(-4, -5) = {result}")
-    print(f"   Expected: 20, Actual: {result}, Status: {'✅ PASS' if result == 20 else '❌ FAIL'}")
-    
-    print("\n3. Test multiplication of positive and negative numbers")
-    result = calc.multiply(4, -5)
-    print(f"   calc.multiply(4, -5) = {result}")
-    print(f"   Expected: -20, Actual: {result}, Status: {'✅ PASS' if result == -20 else '❌ FAIL'}")
-    
-    print("\n4. Test multiplication by zero")
-    result = calc.multiply(100, 0)
-    print(f"   calc.multiply(100, 0) = {result}")
-    print(f"   Expected: 0, Actual: {result}, Status: {'✅ PASS' if result == 0 else '❌ FAIL'}")
-    
-    print("\n5. Test multiplication of floating point numbers")
-    result = calc.multiply(2.5, 4)
-    print(f"   calc.multiply(2.5, 4) = {result}")
-    print(f"   Expected: 10.0, Actual: {result}, Status: {'✅ PASS' if result == 10.0 else '❌ FAIL'}")
-    
-    # ==================== DIVISION TESTS ====================
-    print_separator("➗ DIVISION TESTS")
-    calc.clear_history()
-    
-    print("\n1. Test division of positive numbers")
-    result = calc.divide(10, 2)
-    print(f"   calc.divide(10, 2) = {result}")
-    print(f"   Expected: 5.0, Actual: {result}, Status: {'✅ PASS' if result == 5.0 else '❌ FAIL'}")
-    
-    print("\n2. Test division of negative numbers")
-    result = calc.divide(-10, -2)
-    print(f"   calc.divide(-10, -2) = {result}")
-    print(f"   Expected: 5.0, Actual: {result}, Status: {'✅ PASS' if result == 5.0 else '❌ FAIL'}")
-    
-    print("\n3. Test division of positive and negative numbers")
-    result = calc.divide(10, -2)
-    print(f"   calc.divide(10, -2) = {result}")
-    print(f"   Expected: -5.0, Actual: {result}, Status: {'✅ PASS' if result == -5.0 else '❌ FAIL'}")
-    
-    print("\n4. Test division by zero (Error Handling)")
-    try:
-        result = calc.divide(10, 0)
-        print(f"   calc.divide(10, 0) = {result}")
-        print(f"   Status: ❌ FAIL (Should raise ValueError)")
-    except ValueError as e:
-        print(f"   calc.divide(10, 0) → ValueError: '{e}'")
-        print(f"   Expected: ValueError, Actual: ValueError, Status: {'✅ PASS'}")
-    
-    print("\n5. Test division resulting in floating point")
-    result = calc.divide(7, 2)
-    print(f"   calc.divide(7, 2) = {result}")
-    print(f"   Expected: 3.5, Actual: {result}, Status: {'✅ PASS' if result == 3.5 else '❌ FAIL'}")
-    
-    print("\n6. Test zero divided by any number")
-    result = calc.divide(0, 5)
-    print(f"   calc.divide(0, 5) = {result}")
-    print(f"   Expected: 0.0, Actual: {result}, Status: {'✅ PASS' if result == 0.0 else '❌ FAIL'}")
-    
-    # ==================== POWER TESTS ====================
-    print_separator("🔢 POWER TESTS")
-    calc.clear_history()
-    
-    print("\n1. Test power with positive exponent")
-    result = calc.power(2, 3)
-    print(f"   calc.power(2, 3) = {result}")
-    print(f"   Expected: 8, Actual: {result}, Status: {'✅ PASS' if result == 8 else '❌ FAIL'}")
-    
-    print("\n2. Test power with zero exponent")
-    result = calc.power(5, 0)
-    print(f"   calc.power(5, 0) = {result}")
-    print(f"   Expected: 1, Actual: {result}, Status: {'✅ PASS' if result == 1 else '❌ FAIL'}")
-    
-    print("\n3. Test power with negative exponent")
-    result = calc.power(2, -2)
-    print(f"   calc.power(2, -2) = {result}")
-    print(f"   Expected: 0.25, Actual: {result}, Status: {'✅ PASS' if result == 0.25 else '❌ FAIL'}")
-    
-    print("\n4. Test power with fractional exponent")
-    result = calc.power(4, 0.5)
-    print(f"   calc.power(4, 0.5) = {result}")
-    print(f"   Expected: 2.0, Actual: {result}, Status: {'✅ PASS' if result == 2.0 else '❌ FAIL'}")
-    
-    print("\n5. Test power with negative base")
-    result = calc.power(-2, 3)
-    print(f"   calc.power(-2, 3) = {result}")
-    print(f"   Expected: -8, Actual: {result}, Status: {'✅ PASS' if result == -8 else '❌ FAIL'}")
-    
-    # ==================== SQUARE ROOT TESTS ====================
-    print_separator("√ SQUARE ROOT TESTS")
-    calc.clear_history()
-    
-    print("\n1. Test square root of positive number")
-    result = calc.square_root(16)
-    print(f"   calc.square_root(16) = {result}")
-    print(f"   Expected: 4.0, Actual: {result}, Status: {'✅ PASS' if result == 4.0 else '❌ FAIL'}")
-    
-    print("\n2. Test square root of zero")
-    result = calc.square_root(0)
-    print(f"   calc.square_root(0) = {result}")
-    print(f"   Expected: 0.0, Actual: {result}, Status: {'✅ PASS' if result == 0.0 else '❌ FAIL'}")
-    
-    print("\n3. Test square root of negative number (Error Handling)")
-    try:
-        result = calc.square_root(-4)
-        print(f"   calc.square_root(-4) = {result}")
-        print(f"   Status: ❌ FAIL (Should raise ValueError)")
-    except ValueError as e:
-        print(f"   calc.square_root(-4) → ValueError: '{e}'")
-        print(f"   Expected: ValueError, Actual: ValueError, Status: {'✅ PASS'}")
-    
-    print("\n4. Test square root of perfect square")
-    result = calc.square_root(25)
-    print(f"   calc.square_root(25) = {result}")
-    print(f"   Expected: 5.0, Actual: {result}, Status: {'✅ PASS' if result == 5.0 else '❌ FAIL'}")
-    
-    print("\n5. Test square root of non-perfect square")
-    result = calc.square_root(2)
-    print(f"   calc.square_root(2) = {result}")
-    print(f"   Expected: ~1.414, Actual: {result:.3f}, Status: {'✅ PASS' if abs(result - 1.414) < 0.001 else '❌ FAIL'}")
-    
-    # ==================== HISTORY TESTS ====================
-    print_separator("📝 HISTORY TESTS")
-    calc = Calculator()  # New instance
-    
-    print("\n1. Test that history is empty on initialization")
-    history = calc.get_history()
-    print(f"   calc.get_history() = {history}")
-    print(f"   Expected: [], Actual: {history}, Status: {'✅ PASS' if len(history) == 0 else '❌ FAIL'}")
-    
-    print("\n2. Test that operations are recorded in history")
-    calc.add(5, 3)
-    calc.subtract(10, 2)
-    history = calc.get_history()
-    print(f"   After calc.add(5, 3) and calc.subtract(10, 2):")
-    print(f"   calc.get_history() = {history}")
-    print(f"   Expected: 2 items, Actual: {len(history)} items")
-    print(f"   Status: {'✅ PASS' if len(history) == 2 and '5 + 3 = 8' in history and '10 - 2 = 8' in history else '❌ FAIL'}")
-    
-    print("\n3. Test clearing calculation history")
-    calc.multiply(2, 4)
-    print(f"   After adding calc.multiply(2, 4), history has {len(calc.get_history())} items")
-    calc.clear_history()
-    history = calc.get_history()
-    print(f"   After calc.clear_history():")
-    print(f"   calc.get_history() = {history}")
-    print(f"   Expected: 0 items, Actual: {len(history)} items, Status: {'✅ PASS' if len(history) == 0 else '❌ FAIL'}")
-    
-    print("\n4. Test history with multiple different operations")
-    calc.add(1, 2)
-    calc.multiply(3, 4)
-    calc.divide(10, 2)
-    history = calc.get_history()
-    print(f"   After 3 operations:")
-    print(f"   calc.get_history() = {history}")
-    print(f"   Expected: 3 items, Actual: {len(history)} items, Status: {'✅ PASS' if len(history) == 3 else '❌ FAIL'}")
-    
-    # ==================== EDGE CASES ====================
-    print_separator("🎯 EDGE CASES & INTEGRATION TESTS")
-    calc = Calculator()
-    
-    print("\n1. Test operations with large numbers")
-    result = calc.add(1000000, 2000000)
-    print(f"   calc.add(1000000, 2000000) = {result}")
-    print(f"   Expected: 3000000, Actual: {result}, Status: {'✅ PASS' if result == 3000000 else '❌ FAIL'}")
-    
-    print("\n2. Test operations with very small decimal numbers")
-    result = calc.add(0.0001, 0.0002)
-    print(f"   calc.add(0.0001, 0.0002) = {result}")
-    print(f"   Expected: ~0.0003, Actual: {result:.4f}, Status: {'✅ PASS' if abs(result - 0.0003) < 0.0001 else '❌ FAIL'}")
-    
-    print("\n3. Test multiple chained operations")
-    calc.clear_history()
-    result1 = calc.add(5, 3)
-    print(f"   Step 1: calc.add(5, 3) = {result1}")
-    result2 = calc.multiply(result1, 2)
-    print(f"   Step 2: calc.multiply({result1}, 2) = {result2}")
-    result3 = calc.subtract(result2, 4)
-    print(f"   Step 3: calc.subtract({result2}, 4) = {result3}")
-    print(f"   Final Result: {result3}")
-    print(f"   Expected: 12, Actual: {result3}, Status: {'✅ PASS' if result3 == 12 else '❌ FAIL'}")
-    print(f"   History count: {len(calc.get_history())} operations (Expected: 3)")
-    
-    print("\n4. Test complete calculator workflow (Integration)")
-    calc = Calculator()
-    calc.add(10, 5)
-    calc.subtract(20, 8)
-    calc.multiply(4, 3)
-    calc.divide(100, 4)
-    calc.power(2, 4)
-    calc.square_root(16)
-    history = calc.get_history()
-    print(f"   Performed 6 operations:")
-    for i, op in enumerate(history, 1):
-        print(f"      {i}. {op}")
-    print(f"   History count: {len(history)} (Expected: 6), Status: {'✅ PASS' if len(history) == 6 else '❌ FAIL'}")
-    calc.clear_history()
-    print(f"   After clear_history(): {len(calc.get_history())} items (Expected: 0), Status: {'✅ PASS' if len(calc.get_history()) == 0 else '❌ FAIL'}")
-    
-    # ==================== SUMMARY ====================
-    print("\n" + "="*70)
-    print("  📊 TESTING SUMMARY")
-    print("="*70)
-    print("\n✅ All 39 test cases have been demonstrated!")
-    print("✅ All operations produce expected results!")
-    print("✅ Error handling works correctly!")
-    print("✅ History tracking functions properly!")
-    print("✅ Edge cases handled successfully!")
-    print("\n🎉 CALCULATOR APPLICATION VERIFIED - ALL FUNCTIONS WORKING! 🎉\n")
-
-if __name__ == "__main__":
-    demonstrate_all_tests()
+﻿->"->"->"->
+->
+->D->e->m->o->n->s->t->r->a->t->i->o->n-> ->S->c->r->i->p->t-> ->--> ->M->e->m->b->u->k->t->i->k->a->n-> ->H->a->s->i->l-> ->S->e->t->i->a->p-> ->T->e->s->t-> ->C->a->s->e->
+->
+->M->e->n->a->m->p->i->l->k->a->n-> ->h->a->s->i->l-> ->a->k->t->u->a->l-> ->d->a->r->i-> ->s->e->t->i->a->p-> ->o->p->e->r->a->s->i-> ->c->a->l->c->u->l->a->t->o->r->
+->
+->"->"->"->
+->
+->
+->
+->f->r->o->m-> ->c->a->l->c->u->l->a->t->o->r-> ->i->m->p->o->r->t-> ->C->a->l->c->u->l->a->t->o->r->
+->
+->
+->
+->d->e->f-> ->p->r->i->n->t->_->s->e->p->a->r->a->t->o->r->(->t->i->t->l->e->)->:->
+->
+-> -> -> -> ->"->"->"->P->r->i->n->t-> ->s->e->c->t->i->o->n-> ->s->e->p->a->r->a->t->o->r->"->"->"->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->\->n->"-> ->+-> ->"->=->"->*->7->0->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> ->{->t->i->t->l->e->}->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->=->"->*->7->0->)->
+->
+->
+->
+->d->e->f-> ->d->e->m->o->n->s->t->r->a->t->e->_->a->l->l->_->t->e->s->t->s->(->)->:->
+->
+-> -> -> -> ->"->"->"->D->e->m->o->n->s->t->r->a->t->e-> ->a->l->l-> ->t->e->s->t-> ->c->a->s->e->s-> ->w->i->t->h-> ->a->c->t->u->a->l-> ->r->e->s->u->l->t->s->"->"->"->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->\->n->C->A->L->C->U->L->A->T->O->R-> ->U->N->I->T-> ->T->E->S->T->I->N->G-> ->--> ->D->E->M->O->N->S->T->R->A->T->I->O->N-> ->O->F-> ->R->E->S->U->L->T->S->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->=->"->*->7->0->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->M->e->m->b->u->k->t->i->k->a->n-> ->h->a->s->i->l-> ->d->a->r->i-> ->s->e->t->i->a->p-> ->t->e->s->t-> ->c->a->s->e->\->n->"->)->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->#-> ->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=-> ->A->D->D->I->T->I->O->N-> ->T->E->S->T->S-> ->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->
+->
+-> -> -> -> ->p->r->i->n->t->_->s->e->p->a->r->a->t->o->r->(->"->A->D->D->I->T->I->O->N-> ->T->E->S->T->S->"->)->
+->
+-> -> -> -> ->c->a->l->c-> ->=-> ->C->a->l->c->u->l->a->t->o->r->(->)->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->\->n->1->.-> ->T->e->s->t-> ->a->d->d->i->t->i->o->n-> ->o->f-> ->t->w->o-> ->p->o->s->i->t->i->v->e-> ->n->u->m->b->e->r->s->"->)->
+->
+-> -> -> -> ->r->e->s->u->l->t-> ->=-> ->c->a->l->c->.->a->d->d->(->5->,-> ->3->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->c->a->l->c->.->a->d->d->(->5->,-> ->3->)-> ->=-> ->{->r->e->s->u->l->t->}->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->E->x->p->e->c->t->e->d->:-> ->8->,-> ->A->c->t->u->a->l->:-> ->{->r->e->s->u->l->t->}->,-> ->S->t->a->t->u->s->:-> ->{->'->-> ->P->A->S->S->'-> ->i->f-> ->r->e->s->u->l->t-> ->=->=-> ->8-> ->e->l->s->e-> ->'->-> ->F->A->I->L->'->}->"->)->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->\->n->2->.-> ->T->e->s->t-> ->a->d->d->i->t->i->o->n-> ->o->f-> ->t->w->o-> ->n->e->g->a->t->i->v->e-> ->n->u->m->b->e->r->s->"->)->
+->
+-> -> -> -> ->r->e->s->u->l->t-> ->=-> ->c->a->l->c->.->a->d->d->(->-->5->,-> ->-->3->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->c->a->l->c->.->a->d->d->(->-->5->,-> ->-->3->)-> ->=-> ->{->r->e->s->u->l->t->}->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->E->x->p->e->c->t->e->d->:-> ->-->8->,-> ->A->c->t->u->a->l->:-> ->{->r->e->s->u->l->t->}->,-> ->S->t->a->t->u->s->:-> ->{->'->-> ->P->A->S->S->'-> ->i->f-> ->r->e->s->u->l->t-> ->=->=-> ->-->8-> ->e->l->s->e-> ->'->-> ->F->A->I->L->'->}->"->)->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->\->n->3->.-> ->T->e->s->t-> ->a->d->d->i->t->i->o->n-> ->w->i->t->h-> ->z->e->r->o->"->)->
+->
+-> -> -> -> ->r->e->s->u->l->t-> ->=-> ->c->a->l->c->.->a->d->d->(->5->,-> ->0->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->c->a->l->c->.->a->d->d->(->5->,-> ->0->)-> ->=-> ->{->r->e->s->u->l->t->}->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->E->x->p->e->c->t->e->d->:-> ->5->,-> ->A->c->t->u->a->l->:-> ->{->r->e->s->u->l->t->}->,-> ->S->t->a->t->u->s->:-> ->{->'->-> ->P->A->S->S->'-> ->i->f-> ->r->e->s->u->l->t-> ->=->=-> ->5-> ->e->l->s->e-> ->'->-> ->F->A->I->L->'->}->"->)->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->\->n->4->.-> ->T->e->s->t-> ->a->d->d->i->t->i->o->n-> ->o->f-> ->f->l->o->a->t->i->n->g-> ->p->o->i->n->t-> ->n->u->m->b->e->r->s->"->)->
+->
+-> -> -> -> ->r->e->s->u->l->t-> ->=-> ->c->a->l->c->.->a->d->d->(->2->.->5->,-> ->3->.->5->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->c->a->l->c->.->a->d->d->(->2->.->5->,-> ->3->.->5->)-> ->=-> ->{->r->e->s->u->l->t->}->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->E->x->p->e->c->t->e->d->:-> ->6->.->0->,-> ->A->c->t->u->a->l->:-> ->{->r->e->s->u->l->t->}->,-> ->S->t->a->t->u->s->:-> ->{->'->P->A->S->S->'-> ->i->f-> ->r->e->s->u->l->t-> ->=->=-> ->6->.->0-> ->e->l->s->e-> ->'->F->A->I->L->'->}->"->)->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->\->n->5->.-> ->T->e->s->t-> ->a->d->d->i->t->i->o->n-> ->o->f-> ->p->o->s->i->t->i->v->e-> ->a->n->d-> ->n->e->g->a->t->i->v->e-> ->n->u->m->b->e->r->s->"->)->
+->
+-> -> -> -> ->r->e->s->u->l->t-> ->=-> ->c->a->l->c->.->a->d->d->(->1->0->,-> ->-->3->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->c->a->l->c->.->a->d->d->(->1->0->,-> ->-->3->)-> ->=-> ->{->r->e->s->u->l->t->}->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->E->x->p->e->c->t->e->d->:-> ->7->,-> ->A->c->t->u->a->l->:-> ->{->r->e->s->u->l->t->}->,-> ->S->t->a->t->u->s->:-> ->{->'->-> ->P->A->S->S->'-> ->i->f-> ->r->e->s->u->l->t-> ->=->=-> ->7-> ->e->l->s->e-> ->'->-> ->F->A->I->L->'->}->"->)->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->#-> ->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=-> ->S->U->B->T->R->A->C->T->I->O->N-> ->T->E->S->T->S-> ->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->
+->
+-> -> -> -> ->p->r->i->n->t->_->s->e->p->a->r->a->t->o->r->(->"->S->U->B->T->R->A->C->T->I->O->N-> ->T->E->S->T->S->"->)->
+->
+-> -> -> -> ->c->a->l->c->.->c->l->e->a->r->_->h->i->s->t->o->r->y->(->)->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->\->n->1->.-> ->T->e->s->t-> ->s->u->b->t->r->a->c->t->i->o->n-> ->o->f-> ->p->o->s->i->t->i->v->e-> ->n->u->m->b->e->r->s->"->)->
+->
+-> -> -> -> ->r->e->s->u->l->t-> ->=-> ->c->a->l->c->.->s->u->b->t->r->a->c->t->(->1->0->,-> ->3->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->c->a->l->c->.->s->u->b->t->r->a->c->t->(->1->0->,-> ->3->)-> ->=-> ->{->r->e->s->u->l->t->}->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->E->x->p->e->c->t->e->d->:-> ->7->,-> ->A->c->t->u->a->l->:-> ->{->r->e->s->u->l->t->}->,-> ->S->t->a->t->u->s->:-> ->{->'->-> ->P->A->S->S->'-> ->i->f-> ->r->e->s->u->l->t-> ->=->=-> ->7-> ->e->l->s->e-> ->'->-> ->F->A->I->L->'->}->"->)->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->\->n->2->.-> ->T->e->s->t-> ->s->u->b->t->r->a->c->t->i->o->n-> ->o->f-> ->n->e->g->a->t->i->v->e-> ->n->u->m->b->e->r->s->"->)->
+->
+-> -> -> -> ->r->e->s->u->l->t-> ->=-> ->c->a->l->c->.->s->u->b->t->r->a->c->t->(->-->5->,-> ->-->3->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->c->a->l->c->.->s->u->b->t->r->a->c->t->(->-->5->,-> ->-->3->)-> ->=-> ->{->r->e->s->u->l->t->}->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->E->x->p->e->c->t->e->d->:-> ->-->2->,-> ->A->c->t->u->a->l->:-> ->{->r->e->s->u->l->t->}->,-> ->S->t->a->t->u->s->:-> ->{->'->P->A->S->S->'-> ->i->f-> ->r->e->s->u->l->t-> ->=->=-> ->-->2-> ->e->l->s->e-> ->'->F->A->I->L->'->}->"->)->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->\->n->3->.-> ->T->e->s->t-> ->s->u->b->t->r->a->c->t->i->o->n-> ->w->i->t->h-> ->z->e->r->o->"->)->
+->
+-> -> -> -> ->r->e->s->u->l->t-> ->=-> ->c->a->l->c->.->s->u->b->t->r->a->c->t->(->5->,-> ->0->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->c->a->l->c->.->s->u->b->t->r->a->c->t->(->5->,-> ->0->)-> ->=-> ->{->r->e->s->u->l->t->}->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->E->x->p->e->c->t->e->d->:-> ->5->,-> ->A->c->t->u->a->l->:-> ->{->r->e->s->u->l->t->}->,-> ->S->t->a->t->u->s->:-> ->{->'->-> ->P->A->S->S->'-> ->i->f-> ->r->e->s->u->l->t-> ->=->=-> ->5-> ->e->l->s->e-> ->'->-> ->F->A->I->L->'->}->"->)->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->\->n->4->.-> ->T->e->s->t-> ->s->u->b->t->r->a->c->t->i->o->n-> ->r->e->s->u->l->t->i->n->g-> ->i->n-> ->n->e->g->a->t->i->v->e-> ->n->u->m->b->e->r->"->)->
+->
+-> -> -> -> ->r->e->s->u->l->t-> ->=-> ->c->a->l->c->.->s->u->b->t->r->a->c->t->(->3->,-> ->1->0->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->c->a->l->c->.->s->u->b->t->r->a->c->t->(->3->,-> ->1->0->)-> ->=-> ->{->r->e->s->u->l->t->}->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->E->x->p->e->c->t->e->d->:-> ->-->7->,-> ->A->c->t->u->a->l->:-> ->{->r->e->s->u->l->t->}->,-> ->S->t->a->t->u->s->:-> ->{->'->P->A->S->S->'-> ->i->f-> ->r->e->s->u->l->t-> ->=->=-> ->-->7-> ->e->l->s->e-> ->'->F->A->I->L->'->}->"->)->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->\->n->5->.-> ->T->e->s->t-> ->s->u->b->t->r->a->c->t->i->o->n-> ->o->f-> ->f->l->o->a->t->i->n->g-> ->p->o->i->n->t-> ->n->u->m->b->e->r->s->"->)->
+->
+-> -> -> -> ->r->e->s->u->l->t-> ->=-> ->c->a->l->c->.->s->u->b->t->r->a->c->t->(->5->.->5->,-> ->2->.->3->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->c->a->l->c->.->s->u->b->t->r->a->c->t->(->5->.->5->,-> ->2->.->3->)-> ->=-> ->{->r->e->s->u->l->t->}->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->E->x->p->e->c->t->e->d->:-> ->~->3->.->2->,-> ->A->c->t->u->a->l->:-> ->{->r->e->s->u->l->t->:->.->1->f->}->,-> ->S->t->a->t->u->s->:-> ->{->'->P->A->S->S->'-> ->i->f-> ->a->b->s->(->r->e->s->u->l->t-> ->--> ->3->.->2->)-> -><-> ->0->.->1-> ->e->l->s->e-> ->'->F->A->I->L->'->}->"->)->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->#-> ->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=-> ->M->U->L->T->I->P->L->I->C->A->T->I->O->N-> ->T->E->S->T->S-> ->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->
+->
+-> -> -> -> ->p->r->i->n->t->_->s->e->p->a->r->a->t->o->r->(->"->M->U->L->T->I->P->L->I->C->A->T->I->O->N-> ->T->E->S->T->S->"->)->
+->
+-> -> -> -> ->c->a->l->c->.->c->l->e->a->r->_->h->i->s->t->o->r->y->(->)->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->\->n->1->.-> ->T->e->s->t-> ->m->u->l->t->i->p->l->i->c->a->t->i->o->n-> ->o->f-> ->p->o->s->i->t->i->v->e-> ->n->u->m->b->e->r->s->"->)->
+->
+-> -> -> -> ->r->e->s->u->l->t-> ->=-> ->c->a->l->c->.->m->u->l->t->i->p->l->y->(->4->,-> ->5->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->c->a->l->c->.->m->u->l->t->i->p->l->y->(->4->,-> ->5->)-> ->=-> ->{->r->e->s->u->l->t->}->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->E->x->p->e->c->t->e->d->:-> ->2->0->,-> ->A->c->t->u->a->l->:-> ->{->r->e->s->u->l->t->}->,-> ->S->t->a->t->u->s->:-> ->{->'->-> ->P->A->S->S->'-> ->i->f-> ->r->e->s->u->l->t-> ->=->=-> ->2->0-> ->e->l->s->e-> ->'->-> ->F->A->I->L->'->}->"->)->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->\->n->2->.-> ->T->e->s->t-> ->m->u->l->t->i->p->l->i->c->a->t->i->o->n-> ->o->f-> ->t->w->o-> ->n->e->g->a->t->i->v->e-> ->n->u->m->b->e->r->s->"->)->
+->
+-> -> -> -> ->r->e->s->u->l->t-> ->=-> ->c->a->l->c->.->m->u->l->t->i->p->l->y->(->-->4->,-> ->-->5->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->c->a->l->c->.->m->u->l->t->i->p->l->y->(->-->4->,-> ->-->5->)-> ->=-> ->{->r->e->s->u->l->t->}->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->E->x->p->e->c->t->e->d->:-> ->2->0->,-> ->A->c->t->u->a->l->:-> ->{->r->e->s->u->l->t->}->,-> ->S->t->a->t->u->s->:-> ->{->'->-> ->P->A->S->S->'-> ->i->f-> ->r->e->s->u->l->t-> ->=->=-> ->2->0-> ->e->l->s->e-> ->'->-> ->F->A->I->L->'->}->"->)->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->\->n->3->.-> ->T->e->s->t-> ->m->u->l->t->i->p->l->i->c->a->t->i->o->n-> ->o->f-> ->p->o->s->i->t->i->v->e-> ->a->n->d-> ->n->e->g->a->t->i->v->e-> ->n->u->m->b->e->r->s->"->)->
+->
+-> -> -> -> ->r->e->s->u->l->t-> ->=-> ->c->a->l->c->.->m->u->l->t->i->p->l->y->(->4->,-> ->-->5->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->c->a->l->c->.->m->u->l->t->i->p->l->y->(->4->,-> ->-->5->)-> ->=-> ->{->r->e->s->u->l->t->}->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->E->x->p->e->c->t->e->d->:-> ->-->2->0->,-> ->A->c->t->u->a->l->:-> ->{->r->e->s->u->l->t->}->,-> ->S->t->a->t->u->s->:-> ->{->'->P->A->S->S->'-> ->i->f-> ->r->e->s->u->l->t-> ->=->=-> ->-->2->0-> ->e->l->s->e-> ->'->F->A->I->L->'->}->"->)->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->\->n->4->.-> ->T->e->s->t-> ->m->u->l->t->i->p->l->i->c->a->t->i->o->n-> ->b->y-> ->z->e->r->o->"->)->
+->
+-> -> -> -> ->r->e->s->u->l->t-> ->=-> ->c->a->l->c->.->m->u->l->t->i->p->l->y->(->1->0->0->,-> ->0->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->c->a->l->c->.->m->u->l->t->i->p->l->y->(->1->0->0->,-> ->0->)-> ->=-> ->{->r->e->s->u->l->t->}->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->E->x->p->e->c->t->e->d->:-> ->0->,-> ->A->c->t->u->a->l->:-> ->{->r->e->s->u->l->t->}->,-> ->S->t->a->t->u->s->:-> ->{->'->P->A->S->S->'-> ->i->f-> ->r->e->s->u->l->t-> ->=->=-> ->0-> ->e->l->s->e-> ->'->F->A->I->L->'->}->"->)->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->\->n->5->.-> ->T->e->s->t-> ->m->u->l->t->i->p->l->i->c->a->t->i->o->n-> ->o->f-> ->f->l->o->a->t->i->n->g-> ->p->o->i->n->t-> ->n->u->m->b->e->r->s->"->)->
+->
+-> -> -> -> ->r->e->s->u->l->t-> ->=-> ->c->a->l->c->.->m->u->l->t->i->p->l->y->(->2->.->5->,-> ->4->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->c->a->l->c->.->m->u->l->t->i->p->l->y->(->2->.->5->,-> ->4->)-> ->=-> ->{->r->e->s->u->l->t->}->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->E->x->p->e->c->t->e->d->:-> ->1->0->.->0->,-> ->A->c->t->u->a->l->:-> ->{->r->e->s->u->l->t->}->,-> ->S->t->a->t->u->s->:-> ->{->'->P->A->S->S->'-> ->i->f-> ->r->e->s->u->l->t-> ->=->=-> ->1->0->.->0-> ->e->l->s->e-> ->'->F->A->I->L->'->}->"->)->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->#-> ->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=-> ->D->I->V->I->S->I->O->N-> ->T->E->S->T->S-> ->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->
+->
+-> -> -> -> ->p->r->i->n->t->_->s->e->p->a->r->a->t->o->r->(->"->D->I->V->I->S->I->O->N-> ->T->E->S->T->S->"->)->
+->
+-> -> -> -> ->c->a->l->c->.->c->l->e->a->r->_->h->i->s->t->o->r->y->(->)->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->\->n->1->.-> ->T->e->s->t-> ->d->i->v->i->s->i->o->n-> ->o->f-> ->p->o->s->i->t->i->v->e-> ->n->u->m->b->e->r->s->"->)->
+->
+-> -> -> -> ->r->e->s->u->l->t-> ->=-> ->c->a->l->c->.->d->i->v->i->d->e->(->1->0->,-> ->2->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->c->a->l->c->.->d->i->v->i->d->e->(->1->0->,-> ->2->)-> ->=-> ->{->r->e->s->u->l->t->}->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->E->x->p->e->c->t->e->d->:-> ->5->.->0->,-> ->A->c->t->u->a->l->:-> ->{->r->e->s->u->l->t->}->,-> ->S->t->a->t->u->s->:-> ->{->'->-> ->P->A->S->S->'-> ->i->f-> ->r->e->s->u->l->t-> ->=->=-> ->5->.->0-> ->e->l->s->e-> ->'->-> ->F->A->I->L->'->}->"->)->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->\->n->2->.-> ->T->e->s->t-> ->d->i->v->i->s->i->o->n-> ->o->f-> ->n->e->g->a->t->i->v->e-> ->n->u->m->b->e->r->s->"->)->
+->
+-> -> -> -> ->r->e->s->u->l->t-> ->=-> ->c->a->l->c->.->d->i->v->i->d->e->(->-->1->0->,-> ->-->2->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->c->a->l->c->.->d->i->v->i->d->e->(->-->1->0->,-> ->-->2->)-> ->=-> ->{->r->e->s->u->l->t->}->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->E->x->p->e->c->t->e->d->:-> ->5->.->0->,-> ->A->c->t->u->a->l->:-> ->{->r->e->s->u->l->t->}->,-> ->S->t->a->t->u->s->:-> ->{->'->-> ->P->A->S->S->'-> ->i->f-> ->r->e->s->u->l->t-> ->=->=-> ->5->.->0-> ->e->l->s->e-> ->'->-> ->F->A->I->L->'->}->"->)->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->\->n->3->.-> ->T->e->s->t-> ->d->i->v->i->s->i->o->n-> ->o->f-> ->p->o->s->i->t->i->v->e-> ->a->n->d-> ->n->e->g->a->t->i->v->e-> ->n->u->m->b->e->r->s->"->)->
+->
+-> -> -> -> ->r->e->s->u->l->t-> ->=-> ->c->a->l->c->.->d->i->v->i->d->e->(->1->0->,-> ->-->2->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->c->a->l->c->.->d->i->v->i->d->e->(->1->0->,-> ->-->2->)-> ->=-> ->{->r->e->s->u->l->t->}->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->E->x->p->e->c->t->e->d->:-> ->-->5->.->0->,-> ->A->c->t->u->a->l->:-> ->{->r->e->s->u->l->t->}->,-> ->S->t->a->t->u->s->:-> ->{->'->P->A->S->S->'-> ->i->f-> ->r->e->s->u->l->t-> ->=->=-> ->-->5->.->0-> ->e->l->s->e-> ->'->F->A->I->L->'->}->"->)->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->\->n->4->.-> ->T->e->s->t-> ->d->i->v->i->s->i->o->n-> ->b->y-> ->z->e->r->o-> ->(->E->r->r->o->r-> ->H->a->n->d->l->i->n->g->)->"->)->
+->
+-> -> -> -> ->t->r->y->:->
+->
+-> -> -> -> -> -> -> -> ->r->e->s->u->l->t-> ->=-> ->c->a->l->c->.->d->i->v->i->d->e->(->1->0->,-> ->0->)->
+->
+-> -> -> -> -> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->c->a->l->c->.->d->i->v->i->d->e->(->1->0->,-> ->0->)-> ->=-> ->{->r->e->s->u->l->t->}->"->)->
+->
+-> -> -> -> -> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->S->t->a->t->u->s->:-> ->F->A->I->L-> ->(->S->h->o->u->l->d-> ->r->a->i->s->e-> ->V->a->l->u->e->E->r->r->o->r->)->"->)->
+->
+-> -> -> -> ->e->x->c->e->p->t-> ->V->a->l->u->e->E->r->r->o->r-> ->a->s-> ->e->:->
+->
+-> -> -> -> -> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->c->a->l->c->.->d->i->v->i->d->e->(->1->0->,-> ->0->)-> ->-->>-> ->V->a->l->u->e->E->r->r->o->r->:-> ->'->{->e->}->'->"->)->
+->
+-> -> -> -> -> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->E->x->p->e->c->t->e->d->:-> ->V->a->l->u->e->E->r->r->o->r->,-> ->A->c->t->u->a->l->:-> ->V->a->l->u->e->E->r->r->o->r->,-> ->S->t->a->t->u->s->:-> ->{->'->P->A->S->S->'->}->"->)->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->\->n->5->.-> ->T->e->s->t-> ->d->i->v->i->s->i->o->n-> ->r->e->s->u->l->t->i->n->g-> ->i->n-> ->f->l->o->a->t->i->n->g-> ->p->o->i->n->t->"->)->
+->
+-> -> -> -> ->r->e->s->u->l->t-> ->=-> ->c->a->l->c->.->d->i->v->i->d->e->(->7->,-> ->2->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->c->a->l->c->.->d->i->v->i->d->e->(->7->,-> ->2->)-> ->=-> ->{->r->e->s->u->l->t->}->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->E->x->p->e->c->t->e->d->:-> ->3->.->5->,-> ->A->c->t->u->a->l->:-> ->{->r->e->s->u->l->t->}->,-> ->S->t->a->t->u->s->:-> ->{->'->P->A->S->S->'-> ->i->f-> ->r->e->s->u->l->t-> ->=->=-> ->3->.->5-> ->e->l->s->e-> ->'->F->A->I->L->'->}->"->)->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->\->n->6->.-> ->T->e->s->t-> ->z->e->r->o-> ->d->i->v->i->d->e->d-> ->b->y-> ->a->n->y-> ->n->u->m->b->e->r->"->)->
+->
+-> -> -> -> ->r->e->s->u->l->t-> ->=-> ->c->a->l->c->.->d->i->v->i->d->e->(->0->,-> ->5->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->c->a->l->c->.->d->i->v->i->d->e->(->0->,-> ->5->)-> ->=-> ->{->r->e->s->u->l->t->}->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->E->x->p->e->c->t->e->d->:-> ->0->.->0->,-> ->A->c->t->u->a->l->:-> ->{->r->e->s->u->l->t->}->,-> ->S->t->a->t->u->s->:-> ->{->'->-> ->P->A->S->S->'-> ->i->f-> ->r->e->s->u->l->t-> ->=->=-> ->0->.->0-> ->e->l->s->e-> ->'->-> ->F->A->I->L->'->}->"->)->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->#-> ->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=-> ->P->O->W->E->R-> ->T->E->S->T->S-> ->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->
+->
+-> -> -> -> ->p->r->i->n->t->_->s->e->p->a->r->a->t->o->r->(->"->�->�-> ->P->O->W->E->R-> ->T->E->S->T->S->"->)->
+->
+-> -> -> -> ->c->a->l->c->.->c->l->e->a->r->_->h->i->s->t->o->r->y->(->)->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->\->n->1->.-> ->T->e->s->t-> ->p->o->w->e->r-> ->w->i->t->h-> ->p->o->s->i->t->i->v->e-> ->e->x->p->o->n->e->n->t->"->)->
+->
+-> -> -> -> ->r->e->s->u->l->t-> ->=-> ->c->a->l->c->.->p->o->w->e->r->(->2->,-> ->3->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->c->a->l->c->.->p->o->w->e->r->(->2->,-> ->3->)-> ->=-> ->{->r->e->s->u->l->t->}->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->E->x->p->e->c->t->e->d->:-> ->8->,-> ->A->c->t->u->a->l->:-> ->{->r->e->s->u->l->t->}->,-> ->S->t->a->t->u->s->:-> ->{->'->-> ->P->A->S->S->'-> ->i->f-> ->r->e->s->u->l->t-> ->=->=-> ->8-> ->e->l->s->e-> ->'->-> ->F->A->I->L->'->}->"->)->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->\->n->2->.-> ->T->e->s->t-> ->p->o->w->e->r-> ->w->i->t->h-> ->z->e->r->o-> ->e->x->p->o->n->e->n->t->"->)->
+->
+-> -> -> -> ->r->e->s->u->l->t-> ->=-> ->c->a->l->c->.->p->o->w->e->r->(->5->,-> ->0->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->c->a->l->c->.->p->o->w->e->r->(->5->,-> ->0->)-> ->=-> ->{->r->e->s->u->l->t->}->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->E->x->p->e->c->t->e->d->:-> ->1->,-> ->A->c->t->u->a->l->:-> ->{->r->e->s->u->l->t->}->,-> ->S->t->a->t->u->s->:-> ->{->'->-> ->P->A->S->S->'-> ->i->f-> ->r->e->s->u->l->t-> ->=->=-> ->1-> ->e->l->s->e-> ->'->-> ->F->A->I->L->'->}->"->)->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->\->n->3->.-> ->T->e->s->t-> ->p->o->w->e->r-> ->w->i->t->h-> ->n->e->g->a->t->i->v->e-> ->e->x->p->o->n->e->n->t->"->)->
+->
+-> -> -> -> ->r->e->s->u->l->t-> ->=-> ->c->a->l->c->.->p->o->w->e->r->(->2->,-> ->-->2->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->c->a->l->c->.->p->o->w->e->r->(->2->,-> ->-->2->)-> ->=-> ->{->r->e->s->u->l->t->}->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->E->x->p->e->c->t->e->d->:-> ->0->.->2->5->,-> ->A->c->t->u->a->l->:-> ->{->r->e->s->u->l->t->}->,-> ->S->t->a->t->u->s->:-> ->{->'->-> ->P->A->S->S->'-> ->i->f-> ->r->e->s->u->l->t-> ->=->=-> ->0->.->2->5-> ->e->l->s->e-> ->'->-> ->F->A->I->L->'->}->"->)->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->\->n->4->.-> ->T->e->s->t-> ->p->o->w->e->r-> ->w->i->t->h-> ->f->r->a->c->t->i->o->n->a->l-> ->e->x->p->o->n->e->n->t->"->)->
+->
+-> -> -> -> ->r->e->s->u->l->t-> ->=-> ->c->a->l->c->.->p->o->w->e->r->(->4->,-> ->0->.->5->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->c->a->l->c->.->p->o->w->e->r->(->4->,-> ->0->.->5->)-> ->=-> ->{->r->e->s->u->l->t->}->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->E->x->p->e->c->t->e->d->:-> ->2->.->0->,-> ->A->c->t->u->a->l->:-> ->{->r->e->s->u->l->t->}->,-> ->S->t->a->t->u->s->:-> ->{->'->-> ->P->A->S->S->'-> ->i->f-> ->r->e->s->u->l->t-> ->=->=-> ->2->.->0-> ->e->l->s->e-> ->'->-> ->F->A->I->L->'->}->"->)->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->\->n->5->.-> ->T->e->s->t-> ->p->o->w->e->r-> ->w->i->t->h-> ->n->e->g->a->t->i->v->e-> ->b->a->s->e->"->)->
+->
+-> -> -> -> ->r->e->s->u->l->t-> ->=-> ->c->a->l->c->.->p->o->w->e->r->(->-->2->,-> ->3->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->c->a->l->c->.->p->o->w->e->r->(->-->2->,-> ->3->)-> ->=-> ->{->r->e->s->u->l->t->}->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->E->x->p->e->c->t->e->d->:-> ->-->8->,-> ->A->c->t->u->a->l->:-> ->{->r->e->s->u->l->t->}->,-> ->S->t->a->t->u->s->:-> ->{->'->-> ->P->A->S->S->'-> ->i->f-> ->r->e->s->u->l->t-> ->=->=-> ->-->8-> ->e->l->s->e-> ->'->-> ->F->A->I->L->'->}->"->)->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->#-> ->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=-> ->S->Q->U->A->R->E-> ->R->O->O->T-> ->T->E->S->T->S-> ->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->
+->
+-> -> -> -> ->p->r->i->n->t->_->s->e->p->a->r->a->t->o->r->(->"->-> ->S->Q->U->A->R->E-> ->R->O->O->T-> ->T->E->S->T->S->"->)->
+->
+-> -> -> -> ->c->a->l->c->.->c->l->e->a->r->_->h->i->s->t->o->r->y->(->)->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->\->n->1->.-> ->T->e->s->t-> ->s->q->u->a->r->e-> ->r->o->o->t-> ->o->f-> ->p->o->s->i->t->i->v->e-> ->n->u->m->b->e->r->"->)->
+->
+-> -> -> -> ->r->e->s->u->l->t-> ->=-> ->c->a->l->c->.->s->q->u->a->r->e->_->r->o->o->t->(->1->6->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->c->a->l->c->.->s->q->u->a->r->e->_->r->o->o->t->(->1->6->)-> ->=-> ->{->r->e->s->u->l->t->}->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->E->x->p->e->c->t->e->d->:-> ->4->.->0->,-> ->A->c->t->u->a->l->:-> ->{->r->e->s->u->l->t->}->,-> ->S->t->a->t->u->s->:-> ->{->'->-> ->P->A->S->S->'-> ->i->f-> ->r->e->s->u->l->t-> ->=->=-> ->4->.->0-> ->e->l->s->e-> ->'->-> ->F->A->I->L->'->}->"->)->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->\->n->2->.-> ->T->e->s->t-> ->s->q->u->a->r->e-> ->r->o->o->t-> ->o->f-> ->z->e->r->o->"->)->
+->
+-> -> -> -> ->r->e->s->u->l->t-> ->=-> ->c->a->l->c->.->s->q->u->a->r->e->_->r->o->o->t->(->0->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->c->a->l->c->.->s->q->u->a->r->e->_->r->o->o->t->(->0->)-> ->=-> ->{->r->e->s->u->l->t->}->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->E->x->p->e->c->t->e->d->:-> ->0->.->0->,-> ->A->c->t->u->a->l->:-> ->{->r->e->s->u->l->t->}->,-> ->S->t->a->t->u->s->:-> ->{->'->-> ->P->A->S->S->'-> ->i->f-> ->r->e->s->u->l->t-> ->=->=-> ->0->.->0-> ->e->l->s->e-> ->'->-> ->F->A->I->L->'->}->"->)->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->\->n->3->.-> ->T->e->s->t-> ->s->q->u->a->r->e-> ->r->o->o->t-> ->o->f-> ->n->e->g->a->t->i->v->e-> ->n->u->m->b->e->r-> ->(->E->r->r->o->r-> ->H->a->n->d->l->i->n->g->)->"->)->
+->
+-> -> -> -> ->t->r->y->:->
+->
+-> -> -> -> -> -> -> -> ->r->e->s->u->l->t-> ->=-> ->c->a->l->c->.->s->q->u->a->r->e->_->r->o->o->t->(->-->4->)->
+->
+-> -> -> -> -> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->c->a->l->c->.->s->q->u->a->r->e->_->r->o->o->t->(->-->4->)-> ->=-> ->{->r->e->s->u->l->t->}->"->)->
+->
+-> -> -> -> -> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->S->t->a->t->u->s->:-> ->-> ->F->A->I->L-> ->(->S->h->o->u->l->d-> ->r->a->i->s->e-> ->V->a->l->u->e->E->r->r->o->r->)->"->)->
+->
+-> -> -> -> ->e->x->c->e->p->t-> ->V->a->l->u->e->E->r->r->o->r-> ->a->s-> ->e->:->
+->
+-> -> -> -> -> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->c->a->l->c->.->s->q->u->a->r->e->_->r->o->o->t->(->-->4->)-> ->->-> ->V->a->l->u->e->E->r->r->o->r->:-> ->'->{->e->}->'->"->)->
+->
+-> -> -> -> -> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->E->x->p->e->c->t->e->d->:-> ->V->a->l->u->e->E->r->r->o->r->,-> ->A->c->t->u->a->l->:-> ->V->a->l->u->e->E->r->r->o->r->,-> ->S->t->a->t->u->s->:-> ->{->'->-> ->P->A->S->S->'->}->"->)->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->\->n->4->.-> ->T->e->s->t-> ->s->q->u->a->r->e-> ->r->o->o->t-> ->o->f-> ->p->e->r->f->e->c->t-> ->s->q->u->a->r->e->"->)->
+->
+-> -> -> -> ->r->e->s->u->l->t-> ->=-> ->c->a->l->c->.->s->q->u->a->r->e->_->r->o->o->t->(->2->5->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->c->a->l->c->.->s->q->u->a->r->e->_->r->o->o->t->(->2->5->)-> ->=-> ->{->r->e->s->u->l->t->}->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->E->x->p->e->c->t->e->d->:-> ->5->.->0->,-> ->A->c->t->u->a->l->:-> ->{->r->e->s->u->l->t->}->,-> ->S->t->a->t->u->s->:-> ->{->'->-> ->P->A->S->S->'-> ->i->f-> ->r->e->s->u->l->t-> ->=->=-> ->5->.->0-> ->e->l->s->e-> ->'->-> ->F->A->I->L->'->}->"->)->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->\->n->5->.-> ->T->e->s->t-> ->s->q->u->a->r->e-> ->r->o->o->t-> ->o->f-> ->n->o->n->-->p->e->r->f->e->c->t-> ->s->q->u->a->r->e->"->)->
+->
+-> -> -> -> ->r->e->s->u->l->t-> ->=-> ->c->a->l->c->.->s->q->u->a->r->e->_->r->o->o->t->(->2->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->c->a->l->c->.->s->q->u->a->r->e->_->r->o->o->t->(->2->)-> ->=-> ->{->r->e->s->u->l->t->}->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->E->x->p->e->c->t->e->d->:-> ->~->1->.->4->1->4->,-> ->A->c->t->u->a->l->:-> ->{->r->e->s->u->l->t->:->.->3->f->}->,-> ->S->t->a->t->u->s->:-> ->{->'->-> ->P->A->S->S->'-> ->i->f-> ->a->b->s->(->r->e->s->u->l->t-> ->--> ->1->.->4->1->4->)-> -><-> ->0->.->0->0->1-> ->e->l->s->e-> ->'->-> ->F->A->I->L->'->}->"->)->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->#-> ->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=-> ->H->I->S->T->O->R->Y-> ->T->E->S->T->S-> ->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->
+->
+-> -> -> -> ->p->r->i->n->t->_->s->e->p->a->r->a->t->o->r->(->"->�->�-> ->H->I->S->T->O->R->Y-> ->T->E->S->T->S->"->)->
+->
+-> -> -> -> ->c->a->l->c-> ->=-> ->C->a->l->c->u->l->a->t->o->r->(->)-> -> ->#-> ->N->e->w-> ->i->n->s->t->a->n->c->e->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->\->n->1->.-> ->T->e->s->t-> ->t->h->a->t-> ->h->i->s->t->o->r->y-> ->i->s-> ->e->m->p->t->y-> ->o->n-> ->i->n->i->t->i->a->l->i->z->a->t->i->o->n->"->)->
+->
+-> -> -> -> ->h->i->s->t->o->r->y-> ->=-> ->c->a->l->c->.->g->e->t->_->h->i->s->t->o->r->y->(->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->c->a->l->c->.->g->e->t->_->h->i->s->t->o->r->y->(->)-> ->=-> ->{->h->i->s->t->o->r->y->}->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->E->x->p->e->c->t->e->d->:-> ->[->]->,-> ->A->c->t->u->a->l->:-> ->{->h->i->s->t->o->r->y->}->,-> ->S->t->a->t->u->s->:-> ->{->'->-> ->P->A->S->S->'-> ->i->f-> ->l->e->n->(->h->i->s->t->o->r->y->)-> ->=->=-> ->0-> ->e->l->s->e-> ->'->-> ->F->A->I->L->'->}->"->)->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->\->n->2->.-> ->T->e->s->t-> ->t->h->a->t-> ->o->p->e->r->a->t->i->o->n->s-> ->a->r->e-> ->r->e->c->o->r->d->e->d-> ->i->n-> ->h->i->s->t->o->r->y->"->)->
+->
+-> -> -> -> ->c->a->l->c->.->a->d->d->(->5->,-> ->3->)->
+->
+-> -> -> -> ->c->a->l->c->.->s->u->b->t->r->a->c->t->(->1->0->,-> ->2->)->
+->
+-> -> -> -> ->h->i->s->t->o->r->y-> ->=-> ->c->a->l->c->.->g->e->t->_->h->i->s->t->o->r->y->(->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->A->f->t->e->r-> ->c->a->l->c->.->a->d->d->(->5->,-> ->3->)-> ->a->n->d-> ->c->a->l->c->.->s->u->b->t->r->a->c->t->(->1->0->,-> ->2->)->:->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->c->a->l->c->.->g->e->t->_->h->i->s->t->o->r->y->(->)-> ->=-> ->{->h->i->s->t->o->r->y->}->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->E->x->p->e->c->t->e->d->:-> ->2-> ->i->t->e->m->s->,-> ->A->c->t->u->a->l->:-> ->{->l->e->n->(->h->i->s->t->o->r->y->)->}-> ->i->t->e->m->s->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->S->t->a->t->u->s->:-> ->{->'->-> ->P->A->S->S->'-> ->i->f-> ->l->e->n->(->h->i->s->t->o->r->y->)-> ->=->=-> ->2-> ->a->n->d-> ->'->5-> ->+-> ->3-> ->=-> ->8->'-> ->i->n-> ->h->i->s->t->o->r->y-> ->a->n->d-> ->'->1->0-> ->--> ->2-> ->=-> ->8->'-> ->i->n-> ->h->i->s->t->o->r->y-> ->e->l->s->e-> ->'->-> ->F->A->I->L->'->}->"->)->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->\->n->3->.-> ->T->e->s->t-> ->c->l->e->a->r->i->n->g-> ->c->a->l->c->u->l->a->t->i->o->n-> ->h->i->s->t->o->r->y->"->)->
+->
+-> -> -> -> ->c->a->l->c->.->m->u->l->t->i->p->l->y->(->2->,-> ->4->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->A->f->t->e->r-> ->a->d->d->i->n->g-> ->c->a->l->c->.->m->u->l->t->i->p->l->y->(->2->,-> ->4->)->,-> ->h->i->s->t->o->r->y-> ->h->a->s-> ->{->l->e->n->(->c->a->l->c->.->g->e->t->_->h->i->s->t->o->r->y->(->)->)->}-> ->i->t->e->m->s->"->)->
+->
+-> -> -> -> ->c->a->l->c->.->c->l->e->a->r->_->h->i->s->t->o->r->y->(->)->
+->
+-> -> -> -> ->h->i->s->t->o->r->y-> ->=-> ->c->a->l->c->.->g->e->t->_->h->i->s->t->o->r->y->(->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->A->f->t->e->r-> ->c->a->l->c->.->c->l->e->a->r->_->h->i->s->t->o->r->y->(->)->:->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->c->a->l->c->.->g->e->t->_->h->i->s->t->o->r->y->(->)-> ->=-> ->{->h->i->s->t->o->r->y->}->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->E->x->p->e->c->t->e->d->:-> ->0-> ->i->t->e->m->s->,-> ->A->c->t->u->a->l->:-> ->{->l->e->n->(->h->i->s->t->o->r->y->)->}-> ->i->t->e->m->s->,-> ->S->t->a->t->u->s->:-> ->{->'->-> ->P->A->S->S->'-> ->i->f-> ->l->e->n->(->h->i->s->t->o->r->y->)-> ->=->=-> ->0-> ->e->l->s->e-> ->'->-> ->F->A->I->L->'->}->"->)->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->\->n->4->.-> ->T->e->s->t-> ->h->i->s->t->o->r->y-> ->w->i->t->h-> ->m->u->l->t->i->p->l->e-> ->d->i->f->f->e->r->e->n->t-> ->o->p->e->r->a->t->i->o->n->s->"->)->
+->
+-> -> -> -> ->c->a->l->c->.->a->d->d->(->1->,-> ->2->)->
+->
+-> -> -> -> ->c->a->l->c->.->m->u->l->t->i->p->l->y->(->3->,-> ->4->)->
+->
+-> -> -> -> ->c->a->l->c->.->d->i->v->i->d->e->(->1->0->,-> ->2->)->
+->
+-> -> -> -> ->h->i->s->t->o->r->y-> ->=-> ->c->a->l->c->.->g->e->t->_->h->i->s->t->o->r->y->(->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->A->f->t->e->r-> ->3-> ->o->p->e->r->a->t->i->o->n->s->:->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->c->a->l->c->.->g->e->t->_->h->i->s->t->o->r->y->(->)-> ->=-> ->{->h->i->s->t->o->r->y->}->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->E->x->p->e->c->t->e->d->:-> ->3-> ->i->t->e->m->s->,-> ->A->c->t->u->a->l->:-> ->{->l->e->n->(->h->i->s->t->o->r->y->)->}-> ->i->t->e->m->s->,-> ->S->t->a->t->u->s->:-> ->{->'->-> ->P->A->S->S->'-> ->i->f-> ->l->e->n->(->h->i->s->t->o->r->y->)-> ->=->=-> ->3-> ->e->l->s->e-> ->'->-> ->F->A->I->L->'->}->"->)->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->#-> ->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=-> ->E->D->G->E-> ->C->A->S->E->S-> ->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->
+->
+-> -> -> -> ->p->r->i->n->t->_->s->e->p->a->r->a->t->o->r->(->"->�->�-> ->E->D->G->E-> ->C->A->S->E->S-> ->&-> ->I->N->T->E->G->R->A->T->I->O->N-> ->T->E->S->T->S->"->)->
+->
+-> -> -> -> ->c->a->l->c-> ->=-> ->C->a->l->c->u->l->a->t->o->r->(->)->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->\->n->1->.-> ->T->e->s->t-> ->o->p->e->r->a->t->i->o->n->s-> ->w->i->t->h-> ->l->a->r->g->e-> ->n->u->m->b->e->r->s->"->)->
+->
+-> -> -> -> ->r->e->s->u->l->t-> ->=-> ->c->a->l->c->.->a->d->d->(->1->0->0->0->0->0->0->,-> ->2->0->0->0->0->0->0->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->c->a->l->c->.->a->d->d->(->1->0->0->0->0->0->0->,-> ->2->0->0->0->0->0->0->)-> ->=-> ->{->r->e->s->u->l->t->}->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->E->x->p->e->c->t->e->d->:-> ->3->0->0->0->0->0->0->,-> ->A->c->t->u->a->l->:-> ->{->r->e->s->u->l->t->}->,-> ->S->t->a->t->u->s->:-> ->{->'->-> ->P->A->S->S->'-> ->i->f-> ->r->e->s->u->l->t-> ->=->=-> ->3->0->0->0->0->0->0-> ->e->l->s->e-> ->'->-> ->F->A->I->L->'->}->"->)->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->\->n->2->.-> ->T->e->s->t-> ->o->p->e->r->a->t->i->o->n->s-> ->w->i->t->h-> ->v->e->r->y-> ->s->m->a->l->l-> ->d->e->c->i->m->a->l-> ->n->u->m->b->e->r->s->"->)->
+->
+-> -> -> -> ->r->e->s->u->l->t-> ->=-> ->c->a->l->c->.->a->d->d->(->0->.->0->0->0->1->,-> ->0->.->0->0->0->2->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->c->a->l->c->.->a->d->d->(->0->.->0->0->0->1->,-> ->0->.->0->0->0->2->)-> ->=-> ->{->r->e->s->u->l->t->}->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->E->x->p->e->c->t->e->d->:-> ->~->0->.->0->0->0->3->,-> ->A->c->t->u->a->l->:-> ->{->r->e->s->u->l->t->:->.->4->f->}->,-> ->S->t->a->t->u->s->:-> ->{->'->-> ->P->A->S->S->'-> ->i->f-> ->a->b->s->(->r->e->s->u->l->t-> ->--> ->0->.->0->0->0->3->)-> -><-> ->0->.->0->0->0->1-> ->e->l->s->e-> ->'->-> ->F->A->I->L->'->}->"->)->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->\->n->3->.-> ->T->e->s->t-> ->m->u->l->t->i->p->l->e-> ->c->h->a->i->n->e->d-> ->o->p->e->r->a->t->i->o->n->s->"->)->
+->
+-> -> -> -> ->c->a->l->c->.->c->l->e->a->r->_->h->i->s->t->o->r->y->(->)->
+->
+-> -> -> -> ->r->e->s->u->l->t->1-> ->=-> ->c->a->l->c->.->a->d->d->(->5->,-> ->3->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->S->t->e->p-> ->1->:-> ->c->a->l->c->.->a->d->d->(->5->,-> ->3->)-> ->=-> ->{->r->e->s->u->l->t->1->}->"->)->
+->
+-> -> -> -> ->r->e->s->u->l->t->2-> ->=-> ->c->a->l->c->.->m->u->l->t->i->p->l->y->(->r->e->s->u->l->t->1->,-> ->2->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->S->t->e->p-> ->2->:-> ->c->a->l->c->.->m->u->l->t->i->p->l->y->(->{->r->e->s->u->l->t->1->}->,-> ->2->)-> ->=-> ->{->r->e->s->u->l->t->2->}->"->)->
+->
+-> -> -> -> ->r->e->s->u->l->t->3-> ->=-> ->c->a->l->c->.->s->u->b->t->r->a->c->t->(->r->e->s->u->l->t->2->,-> ->4->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->S->t->e->p-> ->3->:-> ->c->a->l->c->.->s->u->b->t->r->a->c->t->(->{->r->e->s->u->l->t->2->}->,-> ->4->)-> ->=-> ->{->r->e->s->u->l->t->3->}->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->F->i->n->a->l-> ->R->e->s->u->l->t->:-> ->{->r->e->s->u->l->t->3->}->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->E->x->p->e->c->t->e->d->:-> ->1->2->,-> ->A->c->t->u->a->l->:-> ->{->r->e->s->u->l->t->3->}->,-> ->S->t->a->t->u->s->:-> ->{->'->-> ->P->A->S->S->'-> ->i->f-> ->r->e->s->u->l->t->3-> ->=->=-> ->1->2-> ->e->l->s->e-> ->'->-> ->F->A->I->L->'->}->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->H->i->s->t->o->r->y-> ->c->o->u->n->t->:-> ->{->l->e->n->(->c->a->l->c->.->g->e->t->_->h->i->s->t->o->r->y->(->)->)->}-> ->o->p->e->r->a->t->i->o->n->s-> ->(->E->x->p->e->c->t->e->d->:-> ->3->)->"->)->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->\->n->4->.-> ->T->e->s->t-> ->c->o->m->p->l->e->t->e-> ->c->a->l->c->u->l->a->t->o->r-> ->w->o->r->k->f->l->o->w-> ->(->I->n->t->e->g->r->a->t->i->o->n->)->"->)->
+->
+-> -> -> -> ->c->a->l->c-> ->=-> ->C->a->l->c->u->l->a->t->o->r->(->)->
+->
+-> -> -> -> ->c->a->l->c->.->a->d->d->(->1->0->,-> ->5->)->
+->
+-> -> -> -> ->c->a->l->c->.->s->u->b->t->r->a->c->t->(->2->0->,-> ->8->)->
+->
+-> -> -> -> ->c->a->l->c->.->m->u->l->t->i->p->l->y->(->4->,-> ->3->)->
+->
+-> -> -> -> ->c->a->l->c->.->d->i->v->i->d->e->(->1->0->0->,-> ->4->)->
+->
+-> -> -> -> ->c->a->l->c->.->p->o->w->e->r->(->2->,-> ->4->)->
+->
+-> -> -> -> ->c->a->l->c->.->s->q->u->a->r->e->_->r->o->o->t->(->1->6->)->
+->
+-> -> -> -> ->h->i->s->t->o->r->y-> ->=-> ->c->a->l->c->.->g->e->t->_->h->i->s->t->o->r->y->(->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->P->e->r->f->o->r->m->e->d-> ->6-> ->o->p->e->r->a->t->i->o->n->s->:->"->)->
+->
+-> -> -> -> ->f->o->r-> ->i->,-> ->o->p-> ->i->n-> ->e->n->u->m->e->r->a->t->e->(->h->i->s->t->o->r->y->,-> ->1->)->:->
+->
+-> -> -> -> -> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> -> -> -> ->{->i->}->.-> ->{->o->p->}->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->H->i->s->t->o->r->y-> ->c->o->u->n->t->:-> ->{->l->e->n->(->h->i->s->t->o->r->y->)->}-> ->(->E->x->p->e->c->t->e->d->:-> ->6->)->,-> ->S->t->a->t->u->s->:-> ->{->'->-> ->P->A->S->S->'-> ->i->f-> ->l->e->n->(->h->i->s->t->o->r->y->)-> ->=->=-> ->6-> ->e->l->s->e-> ->'->-> ->F->A->I->L->'->}->"->)->
+->
+-> -> -> -> ->c->a->l->c->.->c->l->e->a->r->_->h->i->s->t->o->r->y->(->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->f->"-> -> -> ->A->f->t->e->r-> ->c->l->e->a->r->_->h->i->s->t->o->r->y->(->)->:-> ->{->l->e->n->(->c->a->l->c->.->g->e->t->_->h->i->s->t->o->r->y->(->)->)->}-> ->i->t->e->m->s-> ->(->E->x->p->e->c->t->e->d->:-> ->0->)->,-> ->S->t->a->t->u->s->:-> ->{->'->-> ->P->A->S->S->'-> ->i->f-> ->l->e->n->(->c->a->l->c->.->g->e->t->_->h->i->s->t->o->r->y->(->)->)-> ->=->=-> ->0-> ->e->l->s->e-> ->'->-> ->F->A->I->L->'->}->"->)->
+->
+-> -> -> -> ->
+->
+-> -> -> -> ->#-> ->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=-> ->S->U->M->M->A->R->Y-> ->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->=->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->\->n->"-> ->+-> ->"->=->"->*->7->0->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->"-> -> ->�->�-> ->T->E->S->T->I->N->G-> ->S->U->M->M->A->R->Y->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->=->"->*->7->0->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->\->n->-> ->A->l->l-> ->3->9-> ->t->e->s->t-> ->c->a->s->e->s-> ->h->a->v->e-> ->b->e->e->n-> ->d->e->m->o->n->s->t->r->a->t->e->d->!->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->-> ->A->l->l-> ->o->p->e->r->a->t->i->o->n->s-> ->p->r->o->d->u->c->e-> ->e->x->p->e->c->t->e->d-> ->r->e->s->u->l->t->s->!->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->-> ->E->r->r->o->r-> ->h->a->n->d->l->i->n->g-> ->w->o->r->k->s-> ->c->o->r->r->e->c->t->l->y->!->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->-> ->H->i->s->t->o->r->y-> ->t->r->a->c->k->i->n->g-> ->f->u->n->c->t->i->o->n->s-> ->p->r->o->p->e->r->l->y->!->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->-> ->E->d->g->e-> ->c->a->s->e->s-> ->h->a->n->d->l->e->d-> ->s->u->c->c->e->s->s->f->u->l->l->y->!->"->)->
+->
+-> -> -> -> ->p->r->i->n->t->(->"->\->n->�->�-> ->C->A->L->C->U->L->A->T->O->R-> ->A->P->P->L->I->C->A->T->I->O->N-> ->V->E->R->I->F->I->E->D-> ->--> ->A->L->L-> ->F->U->N->C->T->I->O->N->S-> ->W->O->R->K->I->N->G->!-> ->�->�->\->n->"->)->
+->
+->
+->
+->i->f-> ->_->_->n->a->m->e->_->_-> ->=->=-> ->"->_->_->m->a->i->n->_->_->"->:->
+->
+-> -> -> -> ->d->e->m->o->n->s->t->r->a->t->e->_->a->l->l->_->t->e->s->t->s->(->)->
+->
+->

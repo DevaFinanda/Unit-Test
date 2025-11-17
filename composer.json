@@ -1,0 +1,15 @@
+{
+    "require-dev": {
+        "phpunit/phpunit": "^10.0"
+    },
+    "autoload": {
+        "classmap": [
+            "Calculator.php"
+        ]
+    },
+    "autoload-dev": {
+        "classmap": [
+            "CalculatorTest.php"
+        ]
+    }
+}
